@@ -99,6 +99,11 @@
       line-height: 1.5;
     }
 
+    .cta-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
     .phone-button {
       display: flex;
       align-items: center;
@@ -138,8 +143,13 @@
       margin-top: 3px;
     }
 
-    elevenlabs-convai {
-      display: none;
+    .cta-wrapper elevenlabs-convai {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.01;
+      z-index: 10;
     }
   </style>
 </head>
@@ -182,19 +192,21 @@
       “Det ved jeg ikke endnu”.
     </div>
 
-  <elevenlabs-convai
-  agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89"
-  action-text="Start samtale med agenten"
-  start-call-text="Start samtale"
-  end-call-text="Afslut samtale"
-  expand-text="Åbn bemandingsagent"
-  collapse-text="Luk"
-  avatar-orb-color-1="#003B71"
-  avatar-orb-color-2="#005AA0">
-</elevenlabs-convai>  
+    <div class="cta-wrapper">
+      <div class="phone-button">
+        <span class="phone-circle">☎</span>
+        <span>
+          Start samtale med agenten
+          <small>Tryk for at begynde</small>
+        </span>
+      </div>
+
+      <elevenlabs-convai
+        agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89">
+      </elevenlabs-convai>
+    </div>
   </main>
 
   <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
-
 </body>
 </html>
