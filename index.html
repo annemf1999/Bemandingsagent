@@ -182,32 +182,19 @@
       “Det ved jeg ikke endnu”.
     </div>
 
-    <button class="phone-button" onclick="openWidget()">
-      <span class="phone-circle">☎</span>
-      <span>
-        Start samtale med agenten
-        <small>Tryk for at begynde</small>
-      </span>
-    </button>
-
-    <elevenlabs-convai
-      id="bemandingsWidget"
-      agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89">
-    </elevenlabs-convai>
+  <elevenlabs-convai
+  agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89"
+  action-text="Start samtale med agenten"
+  start-call-text="Start samtale"
+  end-call-text="Afslut samtale"
+  expand-text="Åbn bemandingsagent"
+  collapse-text="Luk"
+  avatar-orb-color-1="#003B71"
+  avatar-orb-color-2="#005AA0">
+</elevenlabs-convai>  
   </main>
 
   <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
 
-  <script>
-    function openWidget() {
-      const widget = document.getElementById("bemandingsWidget");
-
-      if (widget && typeof widget.startConversation === "function") {
-        widget.startConversation();
-      } else {
-        alert("Agenten indlæser stadig. Prøv igen om et øjeblik.");
-      }
-    }
-  </script>
 </body>
 </html>
