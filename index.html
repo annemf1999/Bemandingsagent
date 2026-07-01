@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bemandingsagent</title>
 
+  <link rel="manifest" href="manifest.json">
+
   <style>
     body {
       margin: 0;
@@ -72,6 +74,7 @@
       justify-content: center;
       font-size: 22px;
       color: #003B71;
+      font-weight: bold;
     }
 
     .step strong {
@@ -135,10 +138,8 @@
       margin-top: 3px;
     }
 
-    .widget-hidden {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
+    elevenlabs-convai {
+      display: none;
     }
   </style>
 </head>
@@ -152,7 +153,7 @@
 
     <section class="steps">
       <div class="step">
-        <div class="icon">●</div>
+        <div class="icon">1</div>
         <div>
           <strong>Besvar spørgsmålene</strong>
           <span>Agenten guider dig gennem bestillingen.</span>
@@ -160,18 +161,18 @@
       </div>
 
       <div class="step">
-        <div class="icon">✓</div>
+        <div class="icon">2</div>
         <div>
           <strong>Gennemgå opsummeringen</strong>
-          <span>Se alle oplysninger samlet ét sted.</span>
+          <span>Kontrollér oplysningerne, før bestillingen sendes.</span>
         </div>
       </div>
 
       <div class="step">
-        <div class="icon">→</div>
+        <div class="icon">3</div>
         <div>
           <strong>Bestillingen sendes automatisk</strong>
-          <span>Vi sender din bestilling direkte til bemanding.</span>
+          <span>Bestillingen sendes direkte til bemanding.</span>
         </div>
       </div>
     </section>
@@ -180,19 +181,33 @@
       <strong>Tip:</strong> Hvis du mangler oplysninger, kan du svare:
       “Det ved jeg ikke endnu”.
     </div>
-<div class="phone-button">
-  <span class="phone-circle">☎</span>
-  <span>
-    Start samtale med agenten
-    <small>Tryk på knappen nederst til højre for at begynde</small>
-  </span>
-</div>
 
-    <div class="widget-hidden">
-      <elevenlabs-convai agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89"></elevenlabs-convai>
-    </div>
+    <button class="phone-button" onclick="openWidget()">
+      <span class="phone-circle">☎</span>
+      <span>
+        Start samtale med agenten
+        <small>Tryk for at begynde</small>
+      </span>
+    </button>
+
+    <elevenlabs-convai
+      id="bemandingsWidget"
+      agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89">
+    </elevenlabs-convai>
   </main>
 
   <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+
+  <script>
+    function openWidget() {
+      const widget = document.getElementById("bemandingsWidget");
+
+      if (widget && typeof widget.startConversation === "function") {
+        widget.startConversation();
+      } else {
+        alert("Agenten indlæser stadig. Prøv igen om et øjeblik.");
+      }
+    }
+  </script>
 </body>
 </html>
