@@ -180,14 +180,13 @@
       <strong>Tip:</strong> Hvis du mangler oplysninger, kan du svare:
       “Det ved jeg ikke endnu”.
     </div>
-
-    <button class="phone-button" onclick="openWidget()">
-      <span class="phone-circle">☎</span>
-      <span>
-        Start samtale med agenten
-        <small>Tryk for at begynde</small>
-      </span>
-    </button>
+<div class="phone-button">
+  <span class="phone-circle">☎</span>
+  <span>
+    Start samtale med agenten
+    <small>Tryk på knappen nederst til højre for at begynde</small>
+  </span>
+</div>
 
     <div class="widget-hidden">
       <elevenlabs-convai agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89"></elevenlabs-convai>
@@ -195,14 +194,5 @@
   </main>
 
   <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
-
-  <script>
-    function openWidget() {
-      const widget = document.querySelector('elevenlabs-convai');
-      if (widget) {
-        widget.click();
-      }
-    }
-  </script>
 </body>
 </html>
