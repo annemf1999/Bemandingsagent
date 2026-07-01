@@ -1,0 +1,9 @@
+{
+  "name": "Bemandingsagent",
+  "short_name": "Bemanding",
+  "start_url": "/Bemandingsagent/",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#003B71",
+  "icons": []
+}
