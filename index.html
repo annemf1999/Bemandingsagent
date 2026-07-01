@@ -9,49 +9,136 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #1f1f1f;
+      background: linear-gradient(135deg, #eef3f8, #f8fafc);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       padding: 24px;
+      color: #0f172a;
     }
 
     .card {
       width: 100%;
       max-width: 520px;
       background: white;
-      border-radius: 22px;
-      padding: 32px 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      border-radius: 28px;
+      padding: 36px 28px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.14);
       text-align: center;
     }
 
     .logo {
-      font-size: 22px;
-      font-weight: bold;
       color: #003B71;
-      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 28px;
+      letter-spacing: .5px;
     }
 
     h1 {
-      font-size: 30px;
-      margin: 0 0 12px;
+      font-size: 34px;
+      margin: 0 0 10px;
     }
 
-    p {
-      font-size: 16px;
+    .subtitle {
+      font-size: 18px;
+      color: #475569;
+      margin-bottom: 32px;
+    }
+
+    .steps {
+      text-align: left;
+      margin: 0 auto 26px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    .icon {
+      min-width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #eef4fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #003B71;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .step span {
+      color: #475569;
+      font-size: 15px;
+    }
+
+    .tip {
+      background: #f0f7ff;
+      border: 1px solid #cfe3fb;
+      border-radius: 16px;
+      padding: 14px 16px;
+      text-align: left;
+      color: #0f2742;
+      margin-bottom: 24px;
       line-height: 1.5;
     }
 
-    ul {
+    .phone-button {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      background: #003B71;
+      color: white;
+      border-radius: 18px;
+      padding: 18px 22px;
+      box-sizing: border-box;
+      font-size: 20px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
       text-align: left;
-      margin: 24px auto;
-      max-width: 360px;
-      line-height: 1.8;
+      box-shadow: 0 10px 24px rgba(0, 59, 113, .25);
     }
 
-    .widget {
-      margin-top: 28px;
+    .phone-circle {
+      width: 58px;
+      height: 58px;
+      min-width: 58px;
+      border-radius: 50%;
+      background: white;
+      color: #003B71;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .phone-button small {
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+      opacity: .9;
+      margin-top: 3px;
+    }
+
+    .widget-hidden {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
     }
   </style>
 </head>
@@ -61,23 +148,61 @@
     <div class="logo">MEGA FLEX</div>
 
     <h1>Bemandingsagent</h1>
+    <p class="subtitle">Bestil mandskab hurtigt og nemt med Megaflex AI.</p>
 
-    <p>Bestil mandskab hurtigt og nemt med Megaflex AI.</p>
+    <section class="steps">
+      <div class="step">
+        <div class="icon">●</div>
+        <div>
+          <strong>Besvar spørgsmålene</strong>
+          <span>Agenten guider dig gennem bestillingen.</span>
+        </div>
+      </div>
 
-    <ul>
-      <li>Besvar spørgsmålene</li>
-      <li>Gennemgå opsummeringen</li>
-      <li>Godkend bestillingen</li>
-      <li>Bestillingen sendes automatisk til bemanding</li>
-    </ul>
+      <div class="step">
+        <div class="icon">✓</div>
+        <div>
+          <strong>Gennemgå opsummeringen</strong>
+          <span>Se alle oplysninger samlet ét sted.</span>
+        </div>
+      </div>
 
-    <p><strong>Tip:</strong> Hvis du mangler oplysninger, kan du svare: “Det ved jeg ikke endnu”.</p>
+      <div class="step">
+        <div class="icon">→</div>
+        <div>
+          <strong>Bestillingen sendes automatisk</strong>
+          <span>Vi sender din bestilling direkte til bemanding.</span>
+        </div>
+      </div>
+    </section>
 
-    <div class="widget">
+    <div class="tip">
+      <strong>Tip:</strong> Hvis du mangler oplysninger, kan du svare:
+      “Det ved jeg ikke endnu”.
+    </div>
+
+    <button class="phone-button" onclick="openWidget()">
+      <span class="phone-circle">☎</span>
+      <span>
+        Start samtale med agenten
+        <small>Tryk for at begynde</small>
+      </span>
+    </button>
+
+    <div class="widget-hidden">
       <elevenlabs-convai agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89"></elevenlabs-convai>
     </div>
   </main>
 
   <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+
+  <script>
+    function openWidget() {
+      const widget = document.querySelector('elevenlabs-convai');
+      if (widget) {
+        widget.click();
+      }
+    }
+  </script>
 </body>
 </html>
