@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="da">
 <head>
@@ -8,6 +9,10 @@
   <link rel="manifest" href="manifest.json">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -99,11 +104,6 @@
       line-height: 1.5;
     }
 
-    .cta-wrapper {
-      position: relative;
-      width: 100%;
-    }
-
     .phone-button {
       display: flex;
       align-items: center;
@@ -113,13 +113,35 @@
       color: white;
       border-radius: 18px;
       padding: 18px 22px;
-      box-sizing: border-box;
       font-size: 20px;
       font-weight: 700;
       border: none;
       cursor: pointer;
       text-align: left;
       box-shadow: 0 10px 24px rgba(0, 59, 113, .25);
+      transition:
+        transform .15s ease,
+        background-color .15s ease,
+        opacity .15s ease;
+    }
+
+    .phone-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .phone-button:active {
+      transform: translateY(0);
+    }
+
+    .phone-button:disabled {
+      cursor: wait;
+      opacity: .7;
+      transform: none;
+    }
+
+    .phone-button.active-call {
+      background: #9f1d20;
+      box-shadow: 0 10px 24px rgba(159, 29, 32, .25);
     }
 
     .phone-circle {
@@ -135,6 +157,10 @@
       font-size: 28px;
     }
 
+    .active-call .phone-circle {
+      color: #9f1d20;
+    }
+
     .phone-button small {
       display: block;
       font-size: 14px;
@@ -143,13 +169,35 @@
       margin-top: 3px;
     }
 
-    .cta-wrapper elevenlabs-convai {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.01;
-      z-index: 10;
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 28px 20px;
+        border-radius: 22px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .phone-button {
+        padding: 16px 18px;
+        font-size: 18px;
+      }
+
+      .phone-circle {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        font-size: 25px;
+      }
     }
   </style>
 </head>
@@ -159,11 +207,15 @@
     <div class="logo">MEGA FLEX</div>
 
     <h1>Bemandingsagent</h1>
-    <p class="subtitle">Bestil mandskab hurtigt og nemt med Megaflex AI.</p>
+
+    <p class="subtitle">
+      Bestil mandskab hurtigt og nemt med Megaflex AI.
+    </p>
 
     <section class="steps">
       <div class="step">
         <div class="icon">1</div>
+
         <div>
           <strong>Besvar spørgsmålene</strong>
           <span>Agenten guider dig gennem bestillingen.</span>
@@ -172,6 +224,7 @@
 
       <div class="step">
         <div class="icon">2</div>
+
         <div>
           <strong>Gennemgå opsummeringen</strong>
           <span>Kontrollér oplysningerne, før bestillingen sendes.</span>
@@ -180,6 +233,7 @@
 
       <div class="step">
         <div class="icon">3</div>
+
         <div>
           <strong>Bestillingen sendes automatisk</strong>
           <span>Bestillingen sendes direkte til bemanding.</span>
@@ -188,25 +242,31 @@
     </section>
 
     <div class="tip">
-      <strong>Tip:</strong> Hvis du mangler oplysninger, kan du svare:
+      <strong>Tip:</strong>
+      Hvis du mangler oplysninger, kan du svare:
       “Det ved jeg ikke endnu”.
     </div>
 
-    <div class="cta-wrapper">
-      <div class="phone-button">
-        <span class="phone-circle">☎</span>
-        <span>
-          Start samtale med agenten
-          <small>Tryk for at begynde</small>
-        </span>
-      </div>
+    <button
+      id="callButton"
+      class="phone-button"
+      type="button"
+    >
+      <span class="phone-circle">☎</span>
 
-      <elevenlabs-convai
-        agent-id="agent_1001knrswgqxfj39x0tdzh7dtq89">
-      </elevenlabs-convai>
-    </div>
+      <span>
+        <span id="callTitle">
+          Start samtale med agenten
+        </span>
+
+        <small id="callSubtitle">
+          Tryk for at begynde
+        </small>
+      </span>
+    </button>
   </main>
 
-  <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
+```
